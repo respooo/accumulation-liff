@@ -1,0 +1,166 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>積立をはじめる</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+</head>
+<body>
+    
+    <div class="w-75 mt-3 mx-auto card">
+      <div class="card-header font-weight-bold text-center">
+        積立購入サービス情報入力フォーム
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+            返金等のご対応について<br />
+
+            ■積立を中断された場合<br />
+            積立を途中で辞めてしまった場合、いままで積立た金額は「全額返金」致します。しかし、キャッシュバック予定の金額は中断した場合は得られません。ご了承くださいませ。<br />
+            <br />
+            ■弊社の都合によりサービスの継続が困難となった場合<br />
+            弊社の都合によりサービスを中断させていただく場合も同様に、いままで積立た金額は「全額返金」致します。この場合も同様にキャッシュバック予定の金額は得られません。ご了承くださいませ。<br />
+            <br />
+            なお、入力して頂いた期間や月々の金額は後から、変更可能となっておりますのでご安心くださいませ。<br />
+            またその他の場合のご対応につきましても 適宜 公式LINEにてお答え致します。<br />
+            疑問点等ございましたら、お気兼ねなくお申し付けください。<br />
+        </p>
+      </div>
+    </div>
+    <form id="simulation-form" class="w-75 mx-auto">
+        <p class="mt-3">同意される方は「同意する」を選択し、次にお進み下さい。</p>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="consent" id="agree" value="agree" required>
+            <label class="form-check-label" for="agree">同意する</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="consent" id="disagree" value="disagree" required>
+            <label class="form-check-label" for="disagree">同意しない</label>
+        </div>
+        <p class="mt-3">
+            購入したい商品のURL<br />
+            お手数おかけしますが、購入したい商品のURLの添付をお願い致します。<br />
+            （amazonや楽天などのECサイトでの販売情報リンクを添付してください）
+        </p>
+        <div>
+            <input class="form-control w-100 mt-1" name="itemName" placeholder="商品名を記入" required>
+        </div>
+        <p class="mt-3">
+            購入したい商品の金額を入力してください<br />
+            カンマを入れずにご入力ください。<br />
+            こちらは正規の価格のみで受け付けております。<br />
+            セール価格などは対象となりませんのでご注意ください。
+        </p>
+        <div>
+            <input type="number" class="form-control w-100 mt-1" name="price" placeholder="半角数字, 例: 50000" required>
+        </div>
+        <p class="mt-3">どちらで積立を開始しますか？ <br /><strong>1. 月々いくら貯金</strong><br />
+            「月々いくらまでなら支払えるか」を入力して頂き、そこから商品単価を考慮し、「目標達成日」を算出します。
+            <br /><strong>2. いつまで貯金</strong><br />
+            「いつまでに欲しいか」を入力して頂き、そこから商品単価を考慮し、「月々の積立金額」を算出します。</p>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="type" id="every" value="every" required>
+            <label class="form-check-label" for="every">月々いくら貯金（毎月の積立金額を決める）</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="type" id="end" value="end" required>
+            <label class="form-check-label" for="end">いつまで貯金（積立達成の目標日を決める）</label>
+        </div>
+        <div id="amountOfMoney">
+            <p class="mt-3">月々の積立金額を入力してください<br />月々の積立金額は後からでも変更可能ですので、ご安心ください。</p>
+            <input id="amountOfMoneyForm" type="number" class="form-control w-100 mt-1" name="amountOfMoney">
+        </div>
+        <div id="endDate">
+        <p class="mt-3">積立達成目標日を設定してください<br />積立期間は最低<strong>3ヶ月</strong>以上からになります。<br />達成目標日は後からでも変更可能ですので、ご安心くださいませ。</p>
+            <input id=""endDateForm type="date" class="form-control w-100 mt-1" name="endDate">
+        </div>
+        <div class="text-center">
+            <input id="submit" type="submit" class="mt-4 btn btn-primary" value="送信">
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script>
+        $(document).ready(function () {
+            const liffId = "1657664942-ayvy63nv";
+            initializeLiff(liffId);
+            $('#amountOfMoney').css('display', 'none');
+            $('#endDate').css('display', 'none');
+        })
+
+        function initializeLiff(liffId) {
+            liff.init({
+                liffId: liffId
+            }).then(() => {
+                initializeApp();
+            }).catch((err) => {
+                console.log('LIFF Initialization failed ', err);
+            });
+        }
+
+        $(function () {
+            $('input[name="type"]').change(function (e) {
+                const val = $(this).val();
+                if (val === 'every') {
+                    $('#amountOfMoney').css('display', 'block');
+                    $('#amountOfMoneyForm').attr('required', true)
+                    $('#endDate').css('display', 'none');
+                    $('#endDateForm').attr('required', false);
+                } else if (val === 'end') {
+                    $('#amountOfMoney').css('display', 'none');
+                    $('#amountOfMoneyForm').attr('required', false)
+                    $('#endDate').css('display', 'block');
+                    $('#endDateForm').attr('required', true);
+                }
+            })
+            $('form').submit(function (e) {
+                $('#submit').prop('disabled', true);
+                e.preventDefault();
+                const itemName = $('input[name="itemName"]').val();
+                const itemCategory = $('select[name="itemCategory"]').val();
+                const price = $('input[name="price"]').val();
+                const type = $('input[name="type"]:checked').val();
+                const amountOfMoney = $('input[name="amountOfMoney"]').val();
+                const endDate = new Date($('input[name="endDate"]').val());
+                const now = new Date();
+                if (type === 'end' && (endDate.getFullYear() - now.getFullYear()) * 12 + (endDate.getMonth() - now.getMonth()) + 1 <= 2) {
+                    alert('積立期間は最低3ヶ月以上必要です。')
+                    return;
+                }
+                try {
+                    liff.getProfile().then(function (profile) {
+                        let msg = '';
+                        msg += `name=${profile.displayName}&userId=${profile.userId}&itemName=${itemName}&itemCategory=${itemCategory}&price=${price}&type=${type}&`;
+                        if (type === 'every') {
+                            msg += `amountOfMoney=${amountOfMoney}`
+                        } else if (type === 'end') {
+                            msg += `endDate=${endDate.toString()}`;
+                        }
+                        $.ajax({
+                            url: `https://script.google.com/macros/s/AKfycbzOwlpKujUiGlrRRwsmJAx3W1hBD3f8AfFt-RYr6KiODQRdbt4dcz5hk3EtJC7gKZOuog/exec?${msg}`,
+                            method: 'post',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                        }).then(function () {
+                            liff.closeWindow();
+                            return false;
+                        })
+                    })
+                } catch (e) {
+                    window.alert('シミュレーションに失敗しました。入力した値が間違っていないかご確認ください。')
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>
