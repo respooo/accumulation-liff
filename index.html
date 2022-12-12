@@ -146,7 +146,6 @@
                         } else if (type === 'end') {
                             msg += `endDate=${endDate.toString()}`;
                         }
-                        window.alert(msg);
                         $.ajax({
                             url: `https://script.google.com/macros/s/AKfycbwTiwNJ5GcJwGal9VsNGnhpRN27-ZvStaJ1-IkqqC8GzuWqSTBK5IhnvdR2HI2fTiW1sg/exec?${msg}`,
                             method: 'post',
