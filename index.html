@@ -45,7 +45,7 @@
             （amazonや楽天などのECサイトでの販売情報リンクを添付してください）
         </p>
         <div>
-            <input class="form-control w-100 mt-1" name="itemName" placeholder="商品名を記入" required>
+            <input class="form-control w-100 mt-1" name="url" placeholder="商品URLを記入" required>
         </div>
         <p class="mt-3">
             購入したい商品の金額を入力してください<br />
@@ -123,7 +123,7 @@
                 $('#submit').prop('disabled', true);
                 e.preventDefault();
                 const consent = $('input[name="consent"]:checked').val();
-                const itemName = $('input[name="itemName"]').val();
+                const url = $('input[name="url"]').val();
                 const price = $('input[name="price"]').val();
                 const type = $('input[name="type"]:checked').val();
                 const amountOfMoney = $('input[name="amountOfMoney"]').val();
