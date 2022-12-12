@@ -122,8 +122,8 @@
             $('form').submit(function (e) {
                 $('#submit').prop('disabled', true);
                 e.preventDefault();
+                const consent = $('input[name="consent"]:checked').val();
                 const itemName = $('input[name="itemName"]').val();
-                const itemCategory = $('select[name="itemCategory"]').val();
                 const price = $('input[name="price"]').val();
                 const type = $('input[name="type"]:checked').val();
                 const amountOfMoney = $('input[name="amountOfMoney"]').val();
@@ -136,14 +136,14 @@
                 try {
                     liff.getProfile().then(function (profile) {
                         let msg = '';
-                        msg += `name=${profile.displayName}&userId=${profile.userId}&itemName=${itemName}&itemCategory=${itemCategory}&price=${price}&type=${type}&`;
+                        msg += `name=${profile.displayName}&consent=${consent}&userId=${profile.userId}&itemName=${itemName}&price=${price}&type=${type}&`;
                         if (type === 'every') {
                             msg += `amountOfMoney=${amountOfMoney}`
                         } else if (type === 'end') {
                             msg += `endDate=${endDate.toString()}`;
                         }
                         $.ajax({
-                            url: `https://script.google.com/macros/s/AKfycbzOwlpKujUiGlrRRwsmJAx3W1hBD3f8AfFt-RYr6KiODQRdbt4dcz5hk3EtJC7gKZOuog/exec?${msg}`,
+                            url: `https://script.google.com/macros/s/AKfycbzzQ_7kOCpil6K9nzQLAz5LqXhyitLqIsPAaAcPdHqVm3cyOIT8o_qrakqY4E3vAPlSGA/exec?${msg}`,
                             method: 'post',
                             headers: {
                                 'Accept': 'application/json',
@@ -155,7 +155,7 @@
                         })
                     })
                 } catch (e) {
-                    window.alert('シミュレーションに失敗しました。入力した値が間違っていないかご確認ください。')
+                    window.alert('積立開始に失敗しました。入力した値が間違っていないかご確認ください。')
                 }
             });
         });
