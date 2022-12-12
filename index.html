@@ -129,6 +129,10 @@
                 const amountOfMoney = $('input[name="amountOfMoney"]').val();
                 const endDate = new Date($('input[name="endDate"]').val());
                 const now = new Date();
+                if (consent !== 'agree') {
+                    alert('積立開始には同意が必要です。');
+                    return;
+                }
                 if (type === 'end' && (endDate.getFullYear() - now.getFullYear()) * 12 + (endDate.getMonth() - now.getMonth()) + 1 <= 2) {
                     alert('積立期間は最低3ヶ月以上必要です。')
                     return;
