@@ -60,7 +60,7 @@
             毎月の積立日を入力してください
         </p>
         <div>
-            <input type="number" max="31" class="form-control w-100 mt-1" name="establishmentDate" required>
+            <input type="number" max="31" class="form-control w-100 mt-1" name="establishmentDate" placeholder="半角数字 (例: 20)" required>
         </div>
         <p class="mt-3">どちらで積立を開始しますか？ <br /><strong>1. 月々いくら貯金</strong><br />
             「月々いくらまでなら支払えるか」を入力して頂き、そこから商品単価を考慮し、「目標達成日」を算出します。
@@ -154,7 +154,7 @@
                             msg += `endDate=${endDate.toString()}`;
                         }
                         $.ajax({
-                            url: `https://script.google.com/macros/s/AKfycbwPQLYikYwjzfh3JEx-V9L74O0X8TkCk-8jmKX-MMlQRW0frdELi8HJTpOEHT7XCtfcCA/exec?${msg}`,
+                            url: `https://script.google.com/macros/s/AKfycbzQft1hPqTFj1imUZ_2b7PcGwN40i453Xb3UVYwNPm_0lN-wv_pg2fB-MMmMHHOJ9mfEQ/exec?${msg}`,
                             method: 'post',
                             headers: {
                                 'Accept': 'application/json',
