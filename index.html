@@ -82,6 +82,12 @@
         <p class="mt-3">積立達成目標日を設定してください<br />積立期間は最低<strong>3ヶ月</strong>以上からになります。<br />達成目標日は後からでも変更可能ですので、ご安心くださいませ。</p>
             <input id=""endDateForm type="date" class="form-control w-100 mt-1" name="endDate">
         </div>
+        <p class="mt-3">
+            招待者がいる場合は、招待者のLINEユーザー名を入力してください
+        </p>
+        <div>
+            <input class="form-control w-100 mt-1" name="invitedUserName" placeholder="田中 太郎">
+        </div>
         <div class="text-center">
             <input id="submit" type="submit" class="mt-4 btn btn-primary" value="送信">
         </div>
@@ -135,6 +141,7 @@
                 const type = $('input[name="type"]:checked').val();
                 const amountOfMoney = $('input[name="amountOfMoney"]').val();
                 const endDate = new Date($('input[name="endDate"]').val());
+                const invitedUserName = $('input[name="invitedUserName"]').val();
                 const now = new Date();
                 if (consent !== 'agree') {
                     alert('積立開始には同意が必要です。');
@@ -147,7 +154,7 @@
                 try {
                     liff.getProfile().then(function (profile) {
                         let msg = '';
-                        msg += `name=${profile.displayName}&consent=${consent}&userId=${profile.userId}&url=${url}&price=${price}&establishmentDate=${establishmentDate}&type=${type}&`;
+                        msg += `name=${profile.displayName}&consent=${consent}&userId=${profile.userId}&url=${url}&price=${price}&establishmentDate=${establishmentDate}&type=${type}&invitedUserName=${invitedUserName}&`;
                         if (type === 'every') {
                             msg += `amountOfMoney=${amountOfMoney}`
                         } else if (type === 'end') {
