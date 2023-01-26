@@ -151,6 +151,7 @@
                 try {
                     liff.getProfile().then(function (profile) {
                         let msg = '';
+                        // source
                         msg += `name=${profile.displayName}&consent=${consent}&userId=${profile.userId}&url=${url}&price=${price}&establishmentDate=${establishmentDate}&type=${type}&invitedUserName=${invitedUserName}&source=accumulation&`;
                         if (type === 'every') {
                             msg += `amountOfMoney=${amountOfMoney}`
