@@ -151,7 +151,6 @@
                 try {
                     liff.getProfile().then(function (profile) {
                         let msg = '';
-                        // source
                         msg += `name=${profile.displayName}&consent=${consent}&userId=${profile.userId}&url=${url}&price=${price}&establishmentDate=${establishmentDate}&type=${type}&invitedUserName=${invitedUserName}&source=accumulation&`;
                         if (type === 'every') {
                             msg += `amountOfMoney=${amountOfMoney}`
@@ -159,7 +158,7 @@
                             msg += `endDate=${endDate.toString()}`;
                         }
                         $.ajax({
-                            url: `https://script.google.com/macros/s/AKfycby007xCln6P5CMYk5jzDbaHdSD0GB1xoTVl1pqf3YJ0W6iOuiU-vJsgbn0NajHdZDXytg/exec?${msg}`,
+                            url: `https://script.google.com/macros/s/AKfycbwr8ICoWa_HGmazTdyPk5UMn-8Yudq736QCRPSg0-0NzxCZ0dTKOMfOwT5jBz6K9Op09w/exec?${msg}`,
                             method: 'post',
                             headers: {
                                 'Accept': 'application/json',
